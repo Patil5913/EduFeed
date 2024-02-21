@@ -1,10 +1,15 @@
 import React from "react";
-import Img1 from "../../../assets/educator.svg";
+// import Img1 from "../../../assets/educator.svg";
+
+import ff from "../../../assets/ff.svg";
 const Details = () => {
   return (
     <>
       <div className="max-h-full flex flex-col justify-evenly items-center sm:flex-row">
-        <img  src={Img1} alt="" className="w-1/2"/>
+        <div className="w-1/2 ">
+        <img  src={ff} alt="" className="w-3/4 ml-10 "/>
+        </div>
+        
         <div className="text-white w-1/2 mx-5 ">
             <p className="text-4xl font-bold ">About</p>
             <p className="text-s pt-5">EduFeed is an academic feedback system designed to provide students with effective and actionable feedback regarding the faculty members as well as the facilities lacking in the institute. Also our feedback system will provide an extra hand to students to give feedback on the courses and the curriculum they are offered during their semester learning.</p>
