@@ -3,7 +3,7 @@ import React from 'react'
 const AcademicFeedback = () => {
   return (
     <div>
-      This is AcademicFeedback
+      This is AcademicFeedback lol
     </div>
   )
 }
