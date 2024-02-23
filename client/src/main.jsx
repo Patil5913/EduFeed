@@ -12,14 +12,19 @@ import AcademicFeedback from "./pages/student/components/AcademicFeedback.jsx";
 import NonAcademicFeedback from "./pages/student/components/NonAcademicFeedback.jsx";
 import Login from "./pages/login/Login.jsx";
 import Student from "./pages/student/page.jsx";
-
+import Register from "./pages/login/Register.jsx";
+import Mentor from "./pages/mentor/page.jsx";
+import Authority from "./pages/authority/page.jsx";
 const routes = createRoutesFromElements(
   <>
     <Route path="/" element={<App />} />  
     <Route path="/academic" element={<AcademicFeedback />} />
     <Route path="/non-academic" element={<NonAcademicFeedback />} />
+    <Route path="/register" element={<Register />} />
     <Route path="/login" element={<Login />} />
     <Route path="/student" element={<Student />} />
+    <Route path="/mentor" element={<Mentor />} />
+    <Route path="/authority" element={<Authority />} />
   </>
 );
 
