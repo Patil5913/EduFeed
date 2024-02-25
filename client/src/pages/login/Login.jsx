@@ -3,9 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Student from "../student/page";
-import Mentor from "../mentor/page";
-import Authority from "../authority/page";
+
 const Login = () => {
   const navigate = useNavigate();
 
@@ -25,30 +23,39 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:6969/login", formData);
+      const response = await axios.post(
+        "http://localhost:6969/login",
+        formData
+      );
 
-      const user = response.data.user;
-
-      switch (user.role) {
-        case "STUDENT":
-          navigate("/student");  // Redirect to student page
-          break;
-        case "MENTOR":
-          navigate("/mentor");  // Redirect to mentor page
-          break;
-        case "AUTHORITY":
-          navigate("/authority");  // Redirect to authority page
-          break;
-        default:
-          // Handle other roles if needed
-          break;
+      // console.log(response.data.role);
+      
+      if (response.status === 201) {
+        toast.success("Login successful");
+        console.log(response.data.role)
+        if(response.data.role=="STUDENT"){
+          navigate("/student");
+        }
+        else if(response.data.role=="MENTOR"){
+          navigate("/mentor");
+        }
+        else if(response.data.role=="AUTHORITY"){
+          navigate("/authority");
+        }
+        
+      } else {
+        toast.error("Login failed");
       }
-
-      toast.success("Login successful!");
     } catch (error) {
-      console.error("Error during login:", error);
-      toast.error("Invalid email or password. Please try again.");
+      console.error("Error:", error);
+  
+      if (error.response && error.response.status === 401) {
+        toast.error("Invalid credentials");
+      } else {
+        toast.error(`Error: ${error.message}`);
+      }
     }
+    
   };
 
   return (
@@ -91,11 +98,24 @@ const Login = () => {
           </label>
         </div>
 
-        <button type="submit" className="bg-[#002D74] rounded-xl text-white py-2 hover:scale-105 duration-300 mb-4">
+        <button
+          type="submit"
+          className="bg-[#002D74] rounded-xl text-white py-2 hover:scale-105 duration-300 mb-4"
+        >
           Login
         </button>
       </form>
-      <ToastContainer position="bottom-right" autoClose={3000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
+      <ToastContainer
+        position="bottom-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 };
