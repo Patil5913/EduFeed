@@ -15,9 +15,11 @@ import Student from "./pages/student/page.jsx";
 import Register from "./pages/login/Register.jsx";
 import Mentor from "./pages/mentor/page.jsx";
 import Authority from "./pages/authority/page.jsx";
+import Error from "./pages/errorpage/err.jsx"
 const routes = createRoutesFromElements(
   <>
-    <Route path="/" element={<App />} />  
+    <Route path="/" element={<App />} />
+    <Route path="*" element={<Error />} />  
     <Route path="/academic" element={<AcademicFeedback />} />
     <Route path="/non-academic" element={<NonAcademicFeedback />} />
     <Route path="/register" element={<Register />} />
