@@ -8,6 +8,7 @@ const registerDataSchema = new mongoose.Schema({
     branch: { type: String, required: true },
     yearofjoining: { type: String, required: true },
     role: { type: String, required: true },
+    isadmin: { type: Boolean, default: false },
     tokens : [
         {
             token: {

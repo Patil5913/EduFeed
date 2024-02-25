@@ -32,12 +32,13 @@ const registerUser = {
           branch,
           yearofjoining,
           role,
-          // token:await generateAuthToken(),
         });
         const newUser = await user.save();
         const token = await user.generateAuthToken();
+         
         res.status(201).json({
           user: newUser,
+          token:token,
           message: "User Added Successfully",
         });
       } else {

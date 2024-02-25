@@ -3,9 +3,10 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import {useAuth} from '../../store/auth'
 const Login = () => {
   const navigate = useNavigate();
+  const {storeTokenInLs}=useAuth();
 
   const [formData, setFormData] = useState({
     email: "",
@@ -21,7 +22,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    
     try {
       const response = await axios.post(
         "http://localhost:6969/login",
@@ -31,6 +32,7 @@ const Login = () => {
       // console.log(response.data.role);
       
       if (response.status === 201) {
+        storeTokenInLs(response.data.token);
         toast.success("Login successful");
         console.log(response.data.role)
         if(response.data.role=="STUDENT"){
@@ -46,7 +48,8 @@ const Login = () => {
       } else {
         toast.error("Login failed");
       }
-    } catch (error) {
+      storeTokenInLs(response.data.token);
+    } catch (error) { 
       console.error("Error:", error);
   
       if (error.response && error.response.status === 401) {
