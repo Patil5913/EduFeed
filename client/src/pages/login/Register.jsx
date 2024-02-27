@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import {useAuth} from '../../store/auth'
 const Register = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -11,7 +11,7 @@ const Register = () => {
     password: "",
     branch: "",
     yearofjoining: "",
-    role:"",
+    role: "",
   });
 
   const handleChange = (e) => {
@@ -22,14 +22,26 @@ const Register = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    const {storeTokenInLs}=useAuth();
     try {
-      const response = await axios.post("http://localhost:6969/addUser", formData);
-      console.log(formData)
+      const response = await axios.post(
+        "http://localhost:6969/register",
+        formData
+      );
+      
+      console.log(formData);
       console.log(response.data); // Assuming the server sends a response message
-      toast.success("User added successfully!");
+      const err= response.status
+      console.log(err)
+      if (response.status === 201) {
+        storeTokenInLs(response.data.token);
+        toast.success("User added successfully!");
+      } else if (response.status === 208) {
+        console.log("hehe");
+        toast.error("User already exists!");
+      }
     } catch (error) {
-      console.log(formData)
+      console.log(response.status);
       console.error("Error adding user:", error);
       toast.error("Error adding user. Please try again.");
     }
@@ -39,7 +51,7 @@ const Register = () => {
     <div className="bg-white">
       <p>Student Login</p>
       <form onSubmit={handleSubmit} className="flex flex-col gap-2">
-      <div className="relative mt-5">
+        <div className="relative mt-5">
           <input
             id="name"
             type="text"
@@ -56,7 +68,7 @@ const Register = () => {
             name
           </label>
         </div>
-        
+
         <div className="relative mt-5">
           <input
             id="prn"
@@ -74,8 +86,6 @@ const Register = () => {
             PRN
           </label>
         </div>
-
-
 
         <div className="relative mt-5">
           <input
@@ -155,26 +165,37 @@ const Register = () => {
             value={formData.role}
             onChange={handleChange}
             className="relative h-12 px-2 border rounded outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 autofill:bg-white invalid:border-pink-500 invalid:text-pink-500 focus:border-emerald-500 focus:outline-none invalid:focus:border-pink-500 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400"
-            
           >
-          <option value="">Select</option>
-        <option value="STUDENT">Student</option>
-        <option value="MENTOR">Mentor</option>
-        <option value="AUTHORITY">Authority</option>
-        </select>
+            <option value="">Select</option>
+            <option value="STUDENT">Student</option>
+            <option value="MENTOR">Mentor</option>
+            <option value="AUTHORITY">Authority</option>
+          </select>
           <label
             htmlFor="role"
             className="cursor-text peer-focus:cursor-default peer-autofill:-top-2 absolute left-2 -top-2 z-[1] px-2 text-xs text-slate-400 transition-all before:absolute before:top-0 before:left-0 before:z-[-1] before:block before:h-full before:w-full before:bg-white before:transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-required:after:text-pink-500 peer-required:after:content-['\00a0*'] peer-invalid:text-pink-500 peer-focus:-top-2 peer-focus:text-xs peer-focus:text-emerald-500 peer-invalid:peer-focus:text-pink-500 peer-disabled:cursor-not-allowed peer-disabled:text-slate-400 peer-disabled:before:bg-transparent"
           >
-
             Role
           </label>
         </div>
-        <button type="submit" className="bg-[#002D74] rounded-xl text-white py-2 hover:scale-105 duration-300 mb-4">
+        <button
+          type="submit"
+          className="bg-[#002D74] rounded-xl text-white py-2 hover:scale-105 duration-300 mb-4"
+        >
           Register
         </button>
       </form>
-      <ToastContainer position="bottom-right" autoClose={3000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
+      <ToastContainer
+        position="bottom-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 };
