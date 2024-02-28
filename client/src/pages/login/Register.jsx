@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import {useAuth} from '../../store/auth'
+// import {useAuth} from '../../store/auth'
 const Register = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -22,7 +22,7 @@ const Register = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const {storeTokenInLs}=useAuth();
+    // const {storeTokenInLs}=useAuth();
     try {
       const response = await axios.post(
         "http://localhost:6969/register",
@@ -31,10 +31,10 @@ const Register = () => {
       
       console.log(formData);
       console.log(response.data); // Assuming the server sends a response message
-      const err= response.status
-      console.log(err)
+      // const err= response.status
+      // console.log(err)
       if (response.status === 201) {
-        storeTokenInLs(response.data.token);
+        // storeTokenInLs(response.data.token);
         toast.success("User added successfully!");
       } else if (response.status === 208) {
         console.log("hehe");
