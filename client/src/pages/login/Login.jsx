@@ -3,10 +3,10 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import {useAuth} from '../../store/auth'
+import { useAuth } from "../../store/auth";
 const Login = () => {
   const navigate = useNavigate();
-  const {storeTokenInLs}=useAuth();
+  const { storeTokenInLs } = useAuth();
 
   const [formData, setFormData] = useState({
     email: "",
@@ -22,7 +22,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     try {
       const response = await axios.post(
         "http://localhost:6969/login",
@@ -30,18 +30,16 @@ const Login = () => {
       );
 
       // console.log(response.data.role);
-      
+
       if (response.status === 201) {
         storeTokenInLs(response.data.token);
         toast.success("Login successful");
-        console.log(response.data.role)
-        if(response.data.role=="STUDENT"){
+        console.log(response.data.role);
+        if (response.data.role == "STUDENT") {
           navigate("/student");
-        }
-        else if(response.data.role=="MENTOR"){
+        } else if (response.data.role == "MENTOR") {
           navigate("/mentor");
-        }
-        else if(response.data.role=="AUTHORITY"){
+        } else if (response.data.role == "AUTHORITY") {
           navigate("/authority");
         }
         
@@ -49,9 +47,9 @@ const Login = () => {
         toast.error("Login failed");
       }
       storeTokenInLs(response.data.token);
-    } catch (error) { 
+    } catch (error) {
       console.error("Error:", error);
-  
+
       if (error.response && error.response.status === 401) {
         toast.error("Invalid credentials");
       } else {
@@ -63,50 +61,71 @@ const Login = () => {
 
   return (
     <div className="bg-white">
-      <p>Student Login</p>
       <form onSubmit={handleSubmit} className="flex flex-col gap-2">
-        <div className="relative mt-5">
+        <div class="bg-gray-100 flex items-center justify-center h-screen">
+          <div class="bg-white p-8 rounded-lg shadow-lg max-w-sm w-full">
+            <div class="flex justify-center mb-6">
+              <span class="inline-block bg-gray-200 rounded-full p-3">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M12 4a4 4 0 0 1 4 4a4 4 0 0 1-4 4a4 4 0 0 1-4-4a4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"
+                  />
+                </svg>
+              </span>
+            </div>
+            <h2 class="text-2xl font-semibold text-center mb-4">
+            Student Login
+            </h2>  
+              <div class="mb-4">
+                <label
+                  htmlFor="email"
+                  class="block text-gray-700 text-sm font-semibold mb-2"
+                >
+                  Email Address *
+                </label>
+                <input
+                  id="email"
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  required
+                  onChange={handleChange}
+                  class="form-input w-full px-4 py-2 border rounded-lg text-gray-700 focus:ring-blue-500"
+                />
+              </div>
+              <div class="mb-6">
+                <label
+                  for="password"
+                  class="block text-gray-700 text-sm font-semibold mb-2"
+                >
+                  Password *
+                </label>
           <input
-            id="email"
-            type="email"
-            name="email"
-            required
-            value={formData.email}
-            onChange={handleChange}
-            className="relative w-80 h-12 px-2 border rounded outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 autofill:bg-white invalid:border-pink-500 invalid:text-pink-500 focus:border-emerald-500 focus:outline-none invalid:focus:border-pink-500 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400"
-          />
-          <label
-            htmlFor="email"
-            className="cursor-text peer-focus:cursor-default peer-autofill:-top-2 absolute left-2 -top-2 z-[1] px-2 text-xs text-slate-400 transition-all before:absolute before:top-0 before:left-0 before:z-[-1] before:block before:h-full before:w-full before:bg-white before:transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-required:after:text-pink-500 peer-required:after:content-['\00a0*'] peer-invalid:text-pink-500 peer-focus:-top-2 peer-focus:text-xs peer-focus:text-emerald-500 peer-invalid:peer-focus:text-pink-500 peer-disabled:cursor-not-allowed peer-disabled:text-slate-400 peer-disabled:before:bg-transparent"
-          >
-            Email
-          </label>
+                id="password"
+                type="password"
+                name="password"
+                value={formData.password}
+                required
+                onChange={handleChange}
+                class="form-input w-full px-4 py-2 border rounded-lg text-gray-700 focus:ring-blue-500"
+                  placeholder="••••••••"
+                />
+                
+              </div>
+              <button
+                type="submit"
+                class="w-full bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+              >
+                login
+              </button>
+          </div>
         </div>
-
-        <div className="relative my-4">
-          <input
-            id="password"
-            type="password"
-            name="password"
-            required
-            value={formData.password}
-            onChange={handleChange}
-            className="relative h-12 px-4 placeholder-transparent transition-all border rounded outline-none focus-visible:outline-none peer border-slate-200 text-slate-500 autofill:bg-white invalid:border-pink-500 invalid:text-pink-500 focus:border-emerald-500 focus:outline-none invalid:focus:border-pink-500 disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400"
-          />
-          <label
-            htmlFor="password"
-            className="cursor-text peer-focus:cursor-default peer-autofill:-top-2 absolute left-2 -top-2 z-[1] px-2 text-xs text-slate-400 transition-all before:absolute before:top-0 before:left-0 before:z-[-1] before:block before:h-full before:w-full before:bg-white before:transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-required:after:text-pink-500 peer-required:after:content-['\00a0*'] peer-invalid:text-pink-500 peer-focus:-top-2 peer-focus:text-xs peer-focus:text-emerald-500 peer-invalid:peer-focus:text-pink-500 peer-disabled:cursor-not-allowed peer-disabled:text-slate-400 peer-disabled:before:bg-transparent"
-          >
-            Your password
-          </label>
-        </div>
-
-        <button
-          type="submit"
-          className="bg-[#002D74] rounded-xl text-white py-2 hover:scale-105 duration-300 mb-4"
-        >
-          Login
-        </button>
       </form>
       <ToastContainer
         position="bottom-right"
