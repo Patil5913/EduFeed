@@ -9,7 +9,7 @@ export const AuthProvider = ({children})=>{
     const storeTokenInLs=(serverToken)=>{
         return localStorage.setItem("token",serverToken)
     }
-
+ 
     const userAuthentication = async()=>{
         try {
             const response = await fetch("http://localhost:6969/login",{

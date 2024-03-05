@@ -50,10 +50,10 @@ const Login = () => {
     } catch (error) {
       console.error("Error:", error);
 
-      if (error.response && error.response.status === 401) {
+      if (error.response || error.response.status === 401) {
         toast.error("Invalid credentials");
       } else {
-        toast.error(`Error: ${error.message}`);
+        toast.error(`Error`);
       }
     }
     
