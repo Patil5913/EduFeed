@@ -1,14 +1,6 @@
 const mongoose = require("mongoose");
 
 const academicfeedbackSchema = new mongoose.Schema({
-  mentorEmail: {
-    type: String,
-  },
-  mentorQuestions: [
-    {
-      type: String,
-    },
-  ],
   studentEmail: {
     type: String,
   },
