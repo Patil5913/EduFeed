@@ -1,17 +1,17 @@
 const AcademicFeedbackModel = require("../models/academicfeedback.model");
 const userData = require("../models/register.model");
-const AcademicQuestionModel = require("../models/academicquestion.model");
+const NonAcademicQuestionModel = require("../models/academicquestion.model");
 const academicFeedbackController = {
   submitQuestions: async (req, res) => {
     try {
       const { mentorEmail, mentorQuestions } = req.body;
 
-      const quesExist = await AcademicQuestionModel.findOne({
+      const quesExist = await NonAcademicQuestionModel.findOne({
         mentorEmail: mentorEmail,
       });
       
       if (quesExist == null) {
-        const newFeedback = new AcademicQuestionModel({
+        const newFeedback = new NonAcademicQuestionModel({
           mentorEmail,
           mentorQuestions,
         });
