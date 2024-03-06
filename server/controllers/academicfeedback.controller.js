@@ -1,4 +1,4 @@
-const AcademicFeedbackModel = require("../models/academic.model");
+const AcademicFeedbackModel = require("../models/academicfeedback.model");
 const userData = require("../models/register.model");
 
 const academicFeedbackController = {
@@ -9,7 +9,7 @@ const academicFeedbackController = {
       const quesExist = await AcademicFeedbackModel.findOne({
         mentorEmail: mentorEmail,
       });
-
+      
       if (quesExist == null) {
         const newFeedback = new AcademicFeedbackModel({
           mentorEmail,

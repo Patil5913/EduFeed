@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const loginController = require('../controllers/login.controller.js');
 const registerController = require('../controllers/register.controller.js');
-const academicfeedbackController = require('../controllers/academic.controller.js');
+const academicfeedbackController = require('../controllers/academicfeedback.controller.js');
 // const authenticate = require('../middleware/authenticate.js')
 router.get("/", (req, res) => {
   res.send("Hello World");
