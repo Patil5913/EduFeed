@@ -1,6 +1,6 @@
 const AcademicFeedbackModel = require("../models/academicfeedback.model");
 const AcademicQuestionModel = require("../models/academicquestion.model");
-// const userData = require("../models/register.model");
+const userData = require("../models/register.model");
 
 const academicFeedbackController = {
   getMentorQuestions: async (req, res) => {
@@ -20,30 +20,33 @@ const academicFeedbackController = {
   },
   submitFeedback: async (req, res) => {
     try {
-      const { studentEmail, answers, comments } = req.body;
+      const { answers, comments } = req.body;
+
+      // Fetch the user's email from the request
+      const userEmail = userData.email;
+
       const feedbackExist = await AcademicFeedbackModel.findOne({
-        studentEmail: studentEmail,
+        studentEmail: userEmail,
       });
 
       if (feedbackExist == null) {
         const newFeedback = new AcademicFeedbackModel({
-        studentEmail,
-        answers,
-        comments,
-      });
+          studentEmail: userEmail, // Use the fetched email
+          answers,
+          comments,
+        });
 
-      const savedFeedback = await newFeedback.save();
+        const savedFeedback = await newFeedback.save();
 
-      res.status(201).json({
-        feedback: savedFeedback,
-        message: "Student Feedback Submitted Successfully",
-      });
+        res.status(201).json({
+          feedback: savedFeedback,
+          message: "Student Feedback Submitted Successfully",
+        });
       } else {
         res.status(208).json({
           message: "Feedback already submitted",
         });
       }
-      
     } catch (error) {
       res
         .status(500)
