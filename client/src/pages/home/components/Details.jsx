@@ -1,29 +1,49 @@
 import React from "react";
-// import Img1 from "../../../assets/educator.svg";
+import { Link } from "react-router-dom";
+import { Player } from "@lottiefiles/react-lottie-player";
+import homeanimation from "../../../assets/homeimg.json";
 
-import ff from "../../../assets/ff.svg";
 const Details = () => {
   return (
     <>
-      <div className="max-h-full flex flex-col justify-evenly items-center sm:flex-row">
-        <div className="w-1/2 ">
-        <img  src={ff} alt="" className="w-3/4 ml-10 "/>
+      <div className="py-10 flex flex-col justify-evenly items-center sm:flex-row  gap-y-5 ">
+        <div className="sm:w-1/2  h-full flex items-center ">
+          <Player
+            src={homeanimation}
+            className="lg:w-3/4"
+            loop
+            autoplay
+            speed={3}
+          />
         </div>
-        
-        <div className="text-white w-1/2 mx-5 ">
-            <p className="text-4xl font-bold ">About</p>
-            <p className="text-s pt-5">EduFeed is an academic feedback system designed to provide students with effective and actionable feedback regarding the faculty members as well as the facilities lacking in the institute. Also our feedback system will provide an extra hand to students to give feedback on the courses and the curriculum they are offered during their semester learning.</p>
+
+        <div className=" sm:w-1/2 h-full flex items-center justify-start overflow-hidden">
+          <div className=" h-3/4 w-3/4 px-2 mx-10 ">
+            <div className=" ">
+              <h1 className=" font-space font-semibold lg:text-5xl text-4xl">
+                We Need
+              </h1>
+              <h1 className="font-space font-bold lg:text-6xl text-[38px] text-secondary">
+                {" "}
+                Your Opinion
+              </h1>
+            </div>
+            <div className="font-para lg:pr-10 mt-5">
+              <p className=" ">
+                "Your feedback matters! Share thoughts on academics & campus
+                life to help us improve. Thank you for shaping our community."
+              </p>
+            </div>
+            <div className="py-3 w-fit mt-10">
+              <Link to="" className="hover:brightness-110 hover:animate-pulse font-bold py-3 px-6 rounded-full bg-gradient-to-r from-[#E5E3D4] to-[#c3ba76] text-quaternary"> 
+              FeedBack
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
-      {/* <div class="group duration-500 hover:-skew-x-0 skew-x-6 hover:translate-x-2">
-      <div class="group-hover:duration-400 relative rounded-2xl w-72 h-36 bg-zinc-800 text-gray-50 flex flex-col justify-center items-center gap-1 before:-skew-x-12  before:rounded-2xl  before:absolute before:content['']  before:bg-neutral-700 before:right-3 before:top-0 before:w-72 before:h-32 before:-z-10">
-        <span class="text-5xl font-bold">Jr</span>
-        <p class="text-amber-300 font-thin">- Frontend Developer -</p>
-      </div>
-    </div> */}
     </>
   );
 };
 
 export default Details;
-

@@ -6,9 +6,11 @@ import Details from './pages/home/components/Details.jsx'
 function App() {
   return (
     <>
+      
       <Header />
       <Details/>
       <Footer />
+     
     </>
   );
 }
