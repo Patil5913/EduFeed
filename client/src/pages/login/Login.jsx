@@ -4,6 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useAuth } from "../../store/auth";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
+import LoginForm from "../login/components/Loginform";
 const Login = () => {
   const navigate = useNavigate();
   const { storeTokenInLs } = useAuth();
@@ -60,9 +63,11 @@ const Login = () => {
   };
 
   return (
-    <div className="bg-white">
-      <form onSubmit={handleSubmit} className="flex flex-col gap-2">
-        <div class="bg-gray-100 flex items-center justify-center h-screen">
+    <>
+      <Header />
+      <LoginForm />
+      {/* <form onSubmit={handleSubmit} className="flex flex-col gap-2">
+        <div class="bg-red-100 flex items-center justify-center h-screen">
           <div class="bg-white p-8 rounded-lg shadow-lg max-w-sm w-full">
             <div class="flex justify-center mb-6">
               <span class="inline-block bg-gray-200 rounded-full p-3">
@@ -126,7 +131,8 @@ const Login = () => {
               </button>
           </div>
         </div>
-      </form>
+      </form> */}
+      <Footer />
       <ToastContainer
         position="bottom-right"
         autoClose={3000}
@@ -138,7 +144,8 @@ const Login = () => {
         draggable
         pauseOnHover
       />
-    </div>
+      
+    </>
   );
 };
 
