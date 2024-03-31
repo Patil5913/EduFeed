@@ -11,8 +11,8 @@ router.get("/", (req, res) => {
   res.send("Hello World");
 });
 
-router.post("/login", loginController.login);
-router.post("/register", registerController.register);
+router.post("/api/login", loginController.login);
+router.post("/api/register", registerController.register);
 router.get('/getUser', registerController.getAllUsers);
 router.post('/academicsubmitquestion', academicquestionController.submitQuestions);
 router.get('/getacademicquestion', academicfeedbackController.getMentorQuestions);
