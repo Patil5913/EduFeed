@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <header class="   mb-1 my-3 ">
       <div class="container mx-auto flex items-center h-[5rem] max-w-full ">
-        <a href="" class="flex items-center justify-center gap-3 px-5 ">
+        <a href="/" class="flex items-center justify-center gap-3 px-5 ">
           <img class="h-[5rem] w-[5rem] " src={Logo} alt="logo" />
           <span class=" hidden md:block text-xl ml-2 uppercase font-black text-quaternary ">EduFeed</span>
          
