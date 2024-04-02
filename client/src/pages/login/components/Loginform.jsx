@@ -88,4 +88,4 @@ const Loginform = () => {
 };
 
 export default Loginform;
-//flex and div exchange karna hai
+

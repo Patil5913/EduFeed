@@ -18,7 +18,7 @@ const Student = () => {
         <h1 className="font-serif font-bold text-3xl ">FeedBack</h1>
       </div>
       <div className="flex  m-10 justify-center  gap-20 ">
-        <div class=" w-[300px] rounded-3xl  overflow-hidden z-[100] relative cursor-pointer snap-start shrink-0 py-8 px-6 bg-white flex flex-col items-center justify-center gap-3 transition-all duration-300 group border-2 border-black">
+        <div class=" w-[300px] rounded-3xl  overflow-hidden z-[100] relative cursor-pointer snap-start shrink-0 py-8 px-6 bg-primary flex flex-col items-center justify-center gap-3 transition-all duration-300 group border-2 border-black">
           <div class=" uppercase text-center  z-40 ">
             <p class="text-black font-bold text-2xl font-serif  px-5">
               Academic{" "}
@@ -61,8 +61,8 @@ const Student = () => {
               </div>
             </button>
             <button  onSubmit={handleSubmit}>
-              <div class="flex items-center space-x-4 p-2 rounded-full bg-gray-100">
-                <span class="flex items-center justify-center w-10 h-10 shrink-0 rounded-full bg-white text-gray-900">
+              <div class="flex items-center space-x-4 p-2 rounded-full bg-secondary">
+                <span class="flex items-center justify-center w-10 h-10 shrink-0 rounded-full bg-white ">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     class="w-6 h-6"
