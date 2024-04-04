@@ -11,7 +11,7 @@ import {
 import AcademicFeedback from "./pages/student/components/AcademicFeedback.jsx";
 import NonAcademicFeedback from "./pages/student/components/NonAcademicFeedback.jsx";
 import Login from "./pages/login/Login.jsx";
-import Student from "./pages/student/page.jsx";
+import Student from "./pages/student/Student.jsx";
 import Register from "./pages/login/Register.jsx";
 import Mentor from "./pages/mentor/page.jsx";
 import Authority from "./pages/authority/page.jsx";
