@@ -8,7 +8,7 @@ const Header = () => {
   // Function to determine if login button should be shown
   const shouldShowLoginButton = () => {
     // Assuming the main page is "/" and login page is "/login"
-    return !(location.pathname === "/" || location.pathname === "/login");
+    return !(location.pathname === "/" || location.pathname === "/login" || location.pathname === "/forgot");
   };
 
   return (

@@ -69,7 +69,7 @@ const Loginform = () => {
               </label>
             </div>
             <a
-              href="#"
+              href="/forgot"
               className=" justify-end flex text-xs text-quaternary hover:text-indigo-500"
             >
               Forgot password?
