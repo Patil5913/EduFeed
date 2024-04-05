@@ -17,6 +17,7 @@ import Mentor from "./pages/mentor/page.jsx";
 import Authority from "./pages/authority/page.jsx";
 import Error from "./pages/errorpage/err.jsx"
 import { AuthProvider } from "./store/auth.jsx";
+import ForgetPass from "./pages/ForgotPass/ForgetPass.jsx";
 const routes = createRoutesFromElements(
   <>
     <Route path="/" element={<App />} />
@@ -28,6 +29,7 @@ const routes = createRoutesFromElements(
     <Route path="/student" element={<Student />} />
     <Route path="/mentor" element={<Mentor />} />
     <Route path="/authority" element={<Authority />} />
+    <Route path="/forgot" element={<ForgetPass />} />
   </>
 );
 
