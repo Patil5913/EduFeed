@@ -10,10 +10,10 @@ import Footer from "../../components/Footer";
 const Student = () => {
   
   return (
-    <div>
-      <Header />
+    <div  className=' md:h-screen flex flex-col justify-between'>
+      
     <FeedSection />
-      <Footer />
+      
     </div>
   );
 };

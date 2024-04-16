@@ -64,7 +64,7 @@ const Login = () => {
 
   return (
     <>
-      <Header />
+      
       <LoginForm />
       {/* <form onSubmit={handleSubmit} className="flex flex-col gap-2">
         <div class="bg-red-100 flex items-center justify-center h-screen">
@@ -132,7 +132,7 @@ const Login = () => {
           </div>
         </div>
       </form> */}
-      <Footer />
+      
       <ToastContainer
         position="bottom-right"
         autoClose={3000}

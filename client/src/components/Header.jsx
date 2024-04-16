@@ -13,7 +13,7 @@ const Header = () => {
 
   return (
     <header className="mb-1 my-3">
-      <div className="container mx-auto flex items-center h-[5rem] max-w-full">
+      <div className="container mx-auto flex items-center h-auto max-w-full">
         <a href="/" className="flex items-center justify-center gap-3 px-5">
           <img className="h-[5rem] w-[5rem]" src={Logo} alt="logo" />
           <span className="hidden md:block text-xl ml-2 uppercase font-black text-quaternary">EduFeed</span>

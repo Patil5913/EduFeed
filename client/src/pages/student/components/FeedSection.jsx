@@ -12,7 +12,7 @@ const feed_section = () => {
   };
   return (
     <>
-      <div className=" w-full min-h-full flex justify-center items-center flex-col my-8">
+      <div className=" w-full  flex justify-center items-center flex-col my-8">
         <div className=" w-full h-11 flex justify-center items-center">
           <h1 className="font-serif font-bold text-3xl ">FeedBack</h1>
         </div>

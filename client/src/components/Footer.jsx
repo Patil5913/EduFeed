@@ -10,7 +10,7 @@ import img7 from '../assets/footerimg7.svg'
 
 const Footer = () => {
     return (
-        <footer className=' fixed bottom-0 w-full h-[6rem]  flex justify-evenly gap-4 items-end mt-3 '>
+        <footer className=' w-full flex justify-evenly gap-4 items-end  '>
             <div className="">
               <img src={img1} alt="React Logo" />
             </div>
@@ -23,13 +23,13 @@ const Footer = () => {
             <div className="">
               <img src={img4} alt="React Logo" />
             </div>
-            <div className="">
+            <div className="sm:block hidden">
               <img src={img5} alt="React Logo" />
             </div>
-            <div className="">
+            <div className="sm:block hidden">
               <img src={img6} alt="React Logo" />
             </div>
-            <div className="">
+            <div className="sm:block hidden">
               <img src={img7} alt="React Logo" />
             </div>
 
